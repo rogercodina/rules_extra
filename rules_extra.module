@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @file
+ * Rules extra.
+ */
+
+/**
+ * Implementation of hook_rules_condition_info().
+ *
+ * Add custom conditions.
+ */
+function rules_extra_rules_condition_info() {
+  return array(
+    'rules_extra_condition_users_current_lang' => array(
+      'label' => t("Current user's language"),
+      'parameter' => array(
+        'language' => array('type' => 'text', 'label' => t('Language code (en, es, de, ...)')),
+      ),
+      'module' => 'rules_extra',
+      'group' => 'Rules extra',
+    ),
+    'rules_extra_condition_site_current_lang' => array(
+      'label' => t("Current site language"),
+      'parameter' => array(
+        'language' => array('type' => 'text', 'label' => t('Language code (en, es, de, ...)')),
+      ),
+      'module' => 'rules_extra',
+      'group' => 'Rules extra',
+    ),
+  );
+}
+
+/**
+ * Condition users_current_lang
+ */
+function rules_extra_condition_users_current_lang($lang) {
+  global $user;
+
+  return ($user->language == $lang);
+}
+
+/**
+ * Condition site_current_lang
+ */
+function rules_extra_condition_site_current_lang($lang) {
+  global $language;
+
+  return ($language->language == $lang);
+}

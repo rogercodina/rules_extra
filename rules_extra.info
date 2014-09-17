@@ -1,0 +1,4 @@
+name = Rules extra
+description = This module adds extra stuff for rules module.
+package = Administration
+core = 7.x
